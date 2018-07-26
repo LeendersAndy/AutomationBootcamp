@@ -55,6 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmptyCardTest.cs" />
     <Compile Include="FillCartText.cs" />
     <Compile Include="SignOutTest.cs" />
     <Compile Include="UnitTest1.cs" />
