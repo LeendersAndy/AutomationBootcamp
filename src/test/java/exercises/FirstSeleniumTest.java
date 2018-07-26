@@ -8,6 +8,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.assertj.core.api.Assertions;
 
+import java.util.concurrent.TimeUnit;
+
 public class FirstSeleniumTest {
     int ascii = 0x2713;
     String check = Character.toString((char)ascii);
@@ -26,10 +28,10 @@ public class FirstSeleniumTest {
         //Assert testen
         Boolean assertBoolean = driver.findElement(By.className("addresses-lists")).isDisplayed();
         Assertions.assertThat(assertBoolean).as("Adressenlijst is weergegeven").isTrue();System.out.println("-Adressenlijst weergegeven"+ check);
-
+        
         String assertText = driver.findElement(By.className("logout")).getText();
         Assertions.assertThat(assertText).as("Tekst bevat geen Sign Out").contains("Sign out"); System.out.println("-Sign Out button aanwezig //n -Succesfully logged in because presence 'Sign Out' "+ check);
-        Thread.sleep(1500);
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
             driver.quit();System.out.println("-Browser closing succeed, test passed"+ check);
 
     }
