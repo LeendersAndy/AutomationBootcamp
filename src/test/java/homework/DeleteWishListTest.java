@@ -18,7 +18,7 @@ public class DeleteWishListTest {
     public void setUp() {
         driver  = BrowserFactoryAdvanced.getDriver(BrowserFactoryAdvanced.Browser.CHROME);
         driver.get("https://techblog.polteq.com/testshop/index.php");
-       // driver.manage().window().maximize();
+        driver.manage().window().maximize();
     }
 
     @AfterMethod
