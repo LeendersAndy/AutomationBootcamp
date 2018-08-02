@@ -13,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 public class FirstSeleniumTest extends TestShopScenario {
     int ascii = 0x2713;
     String check = Character.toString((char)ascii);
+    protected WebDriver driver;
     @Test
     public void logInSuccesful() throws InterruptedException{
         //ChromeDriverManager.getInstance().setup();
