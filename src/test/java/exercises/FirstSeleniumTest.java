@@ -8,14 +8,16 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.assertj.core.api.Assertions;
 
-public class FirstSeleniumTest {
+import java.util.concurrent.TimeUnit;
+
+public class FirstSeleniumTest extends TestShopScenario {
     int ascii = 0x2713;
     String check = Character.toString((char)ascii);
+    protected WebDriver driver;
     @Test
     public void logInSuccesful() throws InterruptedException{
-        ChromeDriverManager.getInstance().setup();
-        WebDriver driver = new ChromeDriver();
-        System.out.println("Tested steps:");
+        //ChromeDriverManager.getInstance().setup();
+        //WebDriver driver = new ChromeDriver();
         driver.get("https://techblog.polteq.com/testshop/index.php");
         driver.manage().window().maximize();System.out.println("-Page loaded correctly" + check);
         driver.findElement(By.className("login")).click();System.out.println("-Redirect to loginpage succeeded"+ check);
@@ -28,9 +30,9 @@ public class FirstSeleniumTest {
         Assertions.assertThat(assertBoolean).as("Adressenlijst is weergegeven").isTrue();System.out.println("-Adressenlijst weergegeven"+ check);
 
         String assertText = driver.findElement(By.className("logout")).getText();
-        Assertions.assertThat(assertText).as("Tekst bevat geen Sign Out").contains("Sign out"); System.out.println("-Sign Out button aanwezig //n -Succesfully logged in because presence 'Sign Out' "+ check);
-        Thread.sleep(1500);
-            driver.quit();System.out.println("-Browser closing succeed, test passed"+ check);
+        Assertions.assertThat(assertText).as("Tekst bevat geen Sign Out").contains("Sign out"); System.out.println("-Sign Out button aanwezig \n-Succesfully logged in because presence 'Sign Out' "+ check);
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+            driver.quit();
 
     }
 }
