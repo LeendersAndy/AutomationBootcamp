@@ -1,5 +1,6 @@
 package exercises;
 
+import Browser.BrowserFactoryAdvanced;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
@@ -18,17 +19,12 @@ public class TestShopScenario {
 
     @BeforeMethod
     public void setUp(){
-        ChromeDriverManager.getInstance().setup();
-        driver = new ChromeDriver();
-        System.out.println("Tested steps:");
+        driver = BrowserFactoryAdvanced.getDriver(BrowserFactoryAdvanced.Browser.CHROME);
         driver.get("https://techblog.polteq.com/testshop/index.php");
     }
     @AfterMethod
     public void tearDown(){
-        driver.quit();System.out.println("-Browser closing succeed, test passed"+ check);
+        driver.quit();
     }
-    @Test
-    public void emptyCard() {
-
-}}
+    }
 
